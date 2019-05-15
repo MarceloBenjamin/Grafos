@@ -1,12 +1,12 @@
-package main;
+package estrutura;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecuperaDados {
+public class RecuperaVertex {
 	private String dados;
 
-	public RecuperaDados(String dados) {
+	public RecuperaVertex(String dados) {
 		this.dados = dados;
 	}
 	
@@ -26,12 +26,12 @@ public class RecuperaDados {
 					count++;
 				} else
 				if (count == 1) {
-					ve.setLatitude(value);
+					ve.setLatitude(Float.parseFloat(value));
 					value = "";
 					count++;
 				} else
 				if (count == 2) {
-					ve.setLongetude(value);
+					ve.setLongetude(Float.parseFloat(value));
 					value = "";
 					count++;
 				} else

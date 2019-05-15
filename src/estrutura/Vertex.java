@@ -1,9 +1,9 @@
-package main;
+package estrutura;
 
 public class Vertex {
 	private String nome;
-	private String latitude;
-	private String longetude;
+	private double latitude;
+	private double longetude;
 	private String profissao;
 	private boolean disponibilidade;
 	
@@ -18,19 +18,19 @@ public class Vertex {
 		this.nome = nome;
 	}
 
-	public String getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(String latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 
-	public String getLongetude() {
+	public double getLongetude() {
 		return longetude;
 	}
 
-	public void setLongetude(String longetude) {
+	public void setLongetude(float longetude) {
 		this.longetude = longetude;
 	}
 
