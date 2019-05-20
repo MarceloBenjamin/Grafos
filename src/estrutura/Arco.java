@@ -6,6 +6,9 @@ public class Arco {
 	Vertex w = new Vertex();
 	double dist;
 	
+	public Arco() {
+	}
+	
 	public Arco(Vertex v, Vertex w, double dist) {
 		this.v = v;
 		this.w = w;

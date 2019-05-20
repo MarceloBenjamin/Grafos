@@ -26,12 +26,12 @@ public class RecuperaVertex {
 					count++;
 				} else
 				if (count == 1) {
-					ve.setLatitude(Float.parseFloat(value));
+					ve.setLatitude(Double.parseDouble(value));
 					value = "";
 					count++;
 				} else
 				if (count == 2) {
-					ve.setLongetude(Float.parseFloat(value));
+					ve.setLongetude(Double.parseDouble(value));
 					value = "";
 					count++;
 				} else

@@ -22,7 +22,7 @@ public class Vertex {
 		return latitude;
 	}
 
-	public void setLatitude(float latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
@@ -30,7 +30,7 @@ public class Vertex {
 		return longetude;
 	}
 
-	public void setLongetude(float longetude) {
+	public void setLongetude(double longetude) {
 		this.longetude = longetude;
 	}
 
