@@ -10,6 +10,17 @@ public class Vertex {
 	public Vertex() {
 	}
 
+	public Vertex(String nome, double latitude, double longetude, String profissao, boolean disponibilidade) {
+		super();
+		this.nome = nome;
+		this.latitude = latitude;
+		this.longetude = longetude;
+		this.profissao = profissao;
+		this.disponibilidade = disponibilidade;
+	}
+
+
+
 	public String getNome() {
 		return nome;
 	}

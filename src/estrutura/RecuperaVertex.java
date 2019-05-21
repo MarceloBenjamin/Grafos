@@ -43,7 +43,8 @@ public class RecuperaVertex {
 				if (count == 4) {
 					ve.setDisponibilidade(Boolean.parseBoolean(value));
 					value = "";
-					veLista.add(ve);
+					
+					veLista.add(new Vertex(ve.getNome(),ve.getLatitude(),ve.getLongetude(),ve.getProfissao(),ve.getDisponibilidade()));
 					
 					System.out.println(ve.getNome()+" / "+ve.getLatitude()+" / "+ve.getLongetude()+" / "+ve.getProfissao()+" / "+ve.getDisponibilidade());
 					

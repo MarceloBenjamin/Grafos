@@ -1,8 +1,9 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import estrutura.GerarAdj;
+import estrutura.Adj;
 import estrutura.RecuperaVertex;
 import estrutura.Vertex;
 import files.RecuperarTexto;
@@ -16,11 +17,25 @@ public class Main {
 		
 		//Extraindo informações do texto
 		RecuperaVertex data = new RecuperaVertex(te);
-		List<Vertex> listaVertex = data.retornaDados();
+		List<Vertex> listaVertex = new ArrayList<>();
+		listaVertex = data.retornaDados();
 		
 		//Calculando distancia e relacionando todos para todos
-		GerarAdj ga = new GerarAdj(listaVertex);
-		
+		List<Adj> listAdj = new ArrayList<>();
+		for (int i = 0; i < listaVertex.size(); i++) {
+			
+			Adj nn = new Adj(listaVertex.get(i));
+			
+			for (int x = 0; x < listaVertex.size(); x++) {
+				if (nn.getV().getNome().equals(listaVertex.get(x).getNome())) {
+				}
+				else {
+					nn.gerarAdj(listaVertex.get(x));
+				}
+			
+			}
+			listAdj.add(nn);
+		}
 		
 	}
 	
