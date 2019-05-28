@@ -51,47 +51,57 @@ public class Dijkstra {
 	}
 	
 	public void algDijgstra() {
-		double valor = 30000;
+		double valor = 300000;
 		int vet = 0;
-		double lista[] = new double[graph.getV()];
+		Vertex lista[] = new Vertex[graph.getV()];
 		double custo[] = new double[graph.getV()];
 		
 		for(int j = 0; j < custo.length; j++) {
-			custo[j] = 30000;
+			custo[j] = 300000;
+			lista[j] = new Vertex();
 		}
+		custo[0] = 0;
 		
-		lista[vet] = 0;
+		Vertex p = graph.getAdjs().get(0).getV();
 		
-		for(int i = 0; i < graph.getV(); i++) {
-			for(int k = 0; k < graph.getAdjs().get(i).getListArco().size(); k++) {
-				if (valor > graph.getAdjs().get(i).getListArco().get(k).getDist()) {
-					valor = graph.getAdjs().get(i).getListArco().get(k).getDist();
+		
+		for (int i = 0; i < graph.getV(); i++) {
+			
+			lista[i] = p;
+			if (i == 0) {
+				custo[i] = i;
+			}
+			else
+			custo[i] = valor;
+			
+			valor = 300000;
+			
+			for (int j = 0; j < graph.getAdjs().get(i).getListArco().size(); j++) {
+				
+				boolean verif = false;
+				for (int h = 0; h < lista.length; h++) {
+					if (lista[h].getNome() == graph.getAdjs().get(i).getListArco().get(j).getW().getNome()) {
+						verif = true;
+					}
+				}
+				
+				if(verif != true) {
+					if (valor > graph.getAdjs().get(i).getListArco().get(j).getDist()) {
+						System.out.println(3);
+						valor = graph.getAdjs().get(i).getListArco().get(j).getDist() + custo[i];
+						p = graph.getAdjs().get(i).getListArco().get(j).getW();
+						System.out.println(valor);
+					}
 				}
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		for (int g = 0; g < lista.length; g++) {
+			System.out.println(lista[g].getNome());
+		}
+		for (int y = 0; y < lista.length; y++) {
+			System.out.println(custo[y]);
+		}
 		
 	}
-
 }

@@ -1,10 +1,10 @@
 package estrutura;
 
 public class Vertex {
-	private String nome;
-	private double latitude;
-	private double longetude;
-	private String profissao;
+	private String nome = "";
+	private double latitude = 0;
+	private double longetude = 0;
+	private String profissao = "";
 	private boolean disponibilidade;
 	
 	public Vertex() {
