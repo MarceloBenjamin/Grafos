@@ -8,9 +8,9 @@ public class CalcularDistancia {
 		
 		double deltaLongitudeInRad = Math.toRadians(secondLongitude - firstLongitude);
 		
-		return Math.acos(Math.cos(firstLatToRad) * Math.cos(secondLatToRad)
+		return (Math.acos(Math.cos(firstLatToRad) * Math.cos(secondLatToRad)
 				* Math.cos(deltaLongitudeInRad) + Math.sin(firstLatToRad)
 				* Math.sin(secondLatToRad))
-				* 6.371;
+				* 6.371)*1000;
 	}
 }

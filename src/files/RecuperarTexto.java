@@ -8,7 +8,7 @@ public class RecuperarTexto {
 	public String retornaTexto() {
 		String te = "";
 		//Recuperar dados do arquivo .txt
-				Path caminho = Paths.get("C:/Users/1712130084/Downloads/Grafos/dados.txt");		
+				Path caminho = Paths.get("C:/Users/famil/Documents/Marcelo/CCO/Grafos/dados.txt");		
 				try {
 					byte[] texto =  Files.readAllBytes(caminho);
 					te = new String(texto);		

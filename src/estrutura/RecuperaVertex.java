@@ -15,12 +15,16 @@ public class RecuperaVertex {
 		Vertex ve = new Vertex();
 		String value = "";
 		int count = 0;
+		int set = 0;
+		
+		Vertex ver = new Vertex("Agente", -15.836073, -47.912019, "", false);
+		veLista.add(ver);
 		
 		for(int i = 0; i < dados.length(); i++) {
 			
 			if((dados.charAt(i)+"").equals(";") || (dados.charAt(i)+"").equals(",")) {
 				
-				if (count == 0) {
+				if (count == 0) {					
 					ve.setNome(value);
 					value = "";
 					count++;
@@ -41,12 +45,18 @@ public class RecuperaVertex {
 					count++;
 				} else
 				if (count == 4) {
+					if(set > 0) {
+						String newValue = "";
+						for(int k =2; k < ve.getNome().length(); k++) {
+							newValue += ve.getNome().charAt(k);
+						}
+						ve.setNome(newValue);
+					}
+					set = 1;
 					ve.setDisponibilidade(Boolean.parseBoolean(value));
 					value = "";
 					
 					veLista.add(new Vertex(ve.getNome(),ve.getLatitude(),ve.getLongetude(),ve.getProfissao(),ve.getDisponibilidade()));
-					
-					System.out.println(ve.getNome()+" / "+ve.getLatitude()+" / "+ve.getLongetude()+" / "+ve.getProfissao()+" / "+ve.getDisponibilidade());
 					
 					count = 0;
 				}
