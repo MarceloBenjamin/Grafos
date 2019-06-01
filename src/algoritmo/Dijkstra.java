@@ -1,5 +1,6 @@
 package algoritmo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,11 +60,11 @@ public class Dijkstra {
 		for(int j = 0; j < custo.length; j++) {
 			custo[j] = 300000;
 			lista[j] = new Vertex();
+			lista[j].setNome("aaa");
 		}
 		custo[0] = 0;
 		
 		Vertex p = graph.getAdjs().get(0).getV();
-		
 		
 		for (int i = 0; i < graph.getV(); i++) {
 			
@@ -76,32 +77,51 @@ public class Dijkstra {
 			
 			valor = 300000;
 			
-			for (int j = 0; j < graph.getAdjs().get(i).getListArco().size(); j++) {
-				
+			boolean f = false;
+			int x = 0;
+			for (int v = 0; v < graph.getV() && f != true; v++) {
+				if (lista[i].getNome().equals(graph.getAdjs().get(v).getV().getNome())) {
+					f = true;
+					x = v;
+				}
+			}
+			
+			for (int j = 0; j < graph.getAdjs().get(x).getListArco().size(); j++) {
 				boolean verif = false;
 				for (int h = 0; h < lista.length; h++) {
-					if (lista[h].getNome() == graph.getAdjs().get(i).getListArco().get(j).getW().getNome()) {
+					if (lista[h].getNome() == graph.getAdjs().get(x).getListArco().get(j).getW().getNome() && verif != true) {
 						verif = true;
 					}
 				}
 				
 				if(verif != true) {
-					if (valor > graph.getAdjs().get(i).getListArco().get(j).getDist()) {
-						System.out.println(3);
-						valor = graph.getAdjs().get(i).getListArco().get(j).getDist() + custo[i];
-						p = graph.getAdjs().get(i).getListArco().get(j).getW();
-						System.out.println(valor);
+					if (valor > graph.getAdjs().get(x).getListArco().get(j).getDist()) {
+						valor = graph.getAdjs().get(x).getListArco().get(j).getDist() + custo[i];
+						p = graph.getAdjs().get(x).getListArco().get(j).getW();
 					}
 				}
 			}
+			
 		}
 		
-		for (int g = 0; g < lista.length; g++) {
-			System.out.println(lista[g].getNome());
+		DecimalFormat df = new DecimalFormat("###,##0.00");
+		
+		System.out.println("\n      Profissionais disponíveis nesse raio: "+(lista.length-1));
+		System.out.println("\n      Profissionais: ");
+		for(int k = 0; k < 1; k++) {
+			for(int g = 0; g < graph.getAdjs().get(k).getListArco().size(); g++) {
+				
+				System.out.println("         "+graph.getAdjs().get(k).getListArco().get(g).getW().getNome()
+						+" | "+graph.getAdjs().get(k).getListArco().get(g).getW().getProfissao()
+						+" | Disponível: "+graph.getAdjs().get(k).getListArco().get(g).getW().getDisponibilidade()
+						+" | Km de distância: "+df.format(graph.getAdjs().get(k).getListArco().get(g).getDist()));
+			}
 		}
-		for (int y = 0; y < lista.length; y++) {
-			System.out.println(custo[y]);
+		System.out.println("\n      Melhor rota: ");
+		for(int b = 1; b < lista.length; b++) {
+			System.out.println("         "+lista[b].getNome()+", quantidade de km: "+df.format(custo[b]));
 		}
+		System.out.println("\n\n");
 		
 	}
 }
