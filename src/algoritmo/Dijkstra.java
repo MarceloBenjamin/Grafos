@@ -10,10 +10,12 @@ import estrutura.Vertex;
 
 public class Dijkstra {
 	double dis;
+	String prof;
 	Digraph graph = new Digraph(new ArrayList<Adj>());
 	
-	public Dijkstra(double dis, Digraph graph) {
+	public Dijkstra(double dis, String prof, Digraph graph) {
 		this.dis = dis;
+		this.prof = prof;
 		this.graph = graph;
 	}
 	
@@ -23,11 +25,38 @@ public class Dijkstra {
 		Vertex ve = new Vertex();
 		ve = graph.getAdjs().get(0).getV();
 		
+		List<String> profs  = new ArrayList<String>();
+		
+		String name = "";
+		for (int i =0; i < prof.length(); i++) {
+			
+			if ((prof.charAt(i)+"").equals(";")) {
+				profs.add(name);
+				name = "";
+			}
+			else {
+				name = name + (prof.charAt(i)+"");
+			}
+		}
+		
+		
 		listaVertex.add(ve);
 		
 		for(int i = 0; i < graph.getAdjs().get(0).getListArco().size(); i++) {
+			boolean verif = false;
 			
-			if(dis > graph.getAdjs().get(0).getListArco().get(i).getDist()) {
+			if (profs.size() != 0) {
+				for (int g = 0; g < profs.size(); g++) {
+					if (profs.get(g) == graph.getAdjs().get(0).getListArco().get(i).getW().getProfissao()) {
+						verif = true;
+					}
+				}
+			} else {
+				verif = true;
+			}
+			
+			
+			if(dis > graph.getAdjs().get(0).getListArco().get(i).getDist() && verif == true) {
 				listaVertex.add(graph.getAdjs().get(0).getListArco().get(i).getW());
 			}
 			

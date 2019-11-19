@@ -29,10 +29,14 @@ public class Main {
 				break;
 			case 2:
 				double distancia;
+				String prof;
 				System.out.print("\n   Digite o raio de distância em km: ");
 				distancia = Double.parseDouble(scan.nextLine());
+				System.out.print("\n   Digite o tipo (Separe por vírgula se formais que um): ");
+				prof = scan.nextLine();
 				
-				Dijkstra dij = new Dijkstra(distancia, gg.getDi());
+				
+				Dijkstra dij = new Dijkstra(distancia, prof, gg.getDi());
 				dij.newGraph();
 				dij.algDijgstra();
 				
